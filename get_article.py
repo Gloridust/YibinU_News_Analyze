@@ -17,6 +17,12 @@ def get_title(news_link):
         if i==1:
          title_text=title_text+" "
          i=i+1
+    div_title=html.xpath('//div[@class="detail-title"]/text()')
+    for title in div_title:
+        title_text=title_text+title
+        if i==1:
+            title_text=title_text+" "
+            i=i+1
     print(title_text)
     return title_text
 

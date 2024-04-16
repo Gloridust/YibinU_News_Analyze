@@ -1,6 +1,7 @@
 import requests
 from lxml import etree
-import csv
+# import csv
+import pandas as pd  
 import os
 import get_article 
 
@@ -51,15 +52,42 @@ def get_news_lists(page_link):
 # def get_article(news_link):
 #     pass
 
-def write_to_csv(article_title, article_date, article_clicks, article_text):
-    # 检查文件是否存在，如果不存在则创建文件并写入表头
-    file_exists = os.path.isfile('./data/articles.csv')
-    with open('./data/articles.csv', 'a', newline='', encoding='utf-8') as file:
-        writer = csv.writer(file)
-        if not file_exists:
-            writer.writerow(['article_title', 'article_date', 'article_clicks', 'article_text'])
-        # 将文章信息写入CSV文件
-        writer.writerow([article_title, article_date, article_clicks, article_text])
+# def write_to_csv(article_title, article_date, article_clicks, article_text):
+#     # 检查文件是否存在，如果不存在则创建文件并写入表头
+#     file_exists = os.path.isfile('./data/articles.csv')
+#     with open('./data/articles.csv', 'a', newline='', encoding='utf-8') as file:
+#         writer = csv.writer(file)
+#         if not file_exists:
+#             writer.writerow(['article_title', 'article_date', 'article_clicks', 'article_text'])
+#         # 将文章信息写入CSV文件
+#         writer.writerow([article_title, article_date, article_clicks, article_text])
+
+def write_to_excel(article_title, article_date, article_clicks, article_text):  
+    # 创建一个字典来保存文章信息  
+    article_info = {  
+        'article_title': [article_title],  
+        'article_date': [article_date],  
+        'article_clicks': [article_clicks],  
+        'article_text': [article_text]  
+    }  
+      
+    # 将字典转换为DataFrame  
+    df = pd.DataFrame(article_info)  
+      
+    # 检查文件是否存在  
+    file_path = './data/articles.xlsx'  
+    if not os.path.isfile(file_path):  
+        # 文件不存在，创建并写入数据  
+        df.to_excel(file_path, index=False)  
+    else:  
+        # 文件存在，读取现有数据并追加新数据  
+        # 读取现有的DataFrame  
+        existing_df = pd.read_excel(file_path)  
+        # 追加新数据  
+        combined_df = pd.concat([existing_df, df], ignore_index=True)  
+        # 写入整个DataFrame，覆盖原有数据  
+        with pd.ExcelWriter(file_path, mode='a', engine='openpyxl', if_sheet_exists='overlay') as writer:  
+            combined_df.to_excel(writer, sheet_name='Sheet1', index=False)
 
 
 if __name__ == "__main__":
@@ -73,4 +101,5 @@ if __name__ == "__main__":
         for news_link in news_list:
             #获取一篇新闻的 题目 日期 点击量 正文 
             article_title,article_date,article_clicks,article_text = get_article.get_article_main(news_link)
-            write_to_csv(article_title,article_date,article_clicks,article_text)
+            write_to_excel(article_title,article_date,article_clicks,article_text)
+            print("####################") #分隔符
