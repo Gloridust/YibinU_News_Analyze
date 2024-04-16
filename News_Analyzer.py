@@ -9,29 +9,21 @@ def test():
     result = ltp.pipeline([texts], tasks = ["cws","ner"])
     print(result.ner)
     # [[('Ns', '宜宾市'), ('Ni', '促进会'), ('Ns', '宜宾'), ('Ni', '学院'), ('Nh', '白玉林'), ('Ni', '宜宾市市场监督管理局'), ('Nh', '宿斌'), ('Ni', '标促会'), ('Nh', '赵东'), ('Ni', '标促会'), ('Ni', '宜宾市市场监管局标准化科'), ('Nh', '王顺强')]]
+# test()
 
+def read_from_excel():
+    try:
+        # 读取Excel文件
+        df = pd.read_excel("./data/articles.xlsx")
+        # 将DataFrame转换为列表
+        data_list = df.values.tolist()
+        # 添加列名作为第一行
+        header = df.columns.tolist()
+        data_list.insert(0, header)
+        return data_list
+    except Exception as e:
+        print("Error occurred while reading from Excel:", e)
 
-def read_csv():
-    # 读取CSV文件  
-    df = pd.read_csv('./data/articles.csv')  
-      
-    # 提取所需列，并将它们转换为列表  
-    articles = []  
-    for index, row in df.iterrows():  
-        article = {  
-            'article_title': row['article_title'],  
-            'article_date': row['article_date'],  
-            'article_clicks': row['article_clicks'],  
-            'article_text': row['article_text']  
-        }  
-        articles.append(article)  
-      
-    # 返回包含所有文章的列表  
-    return articles  
-  
-# 调用函数并打印结果  
-# articles_list = read_csv()  
-# for article in articles_list:  
-#     print(article)
-
-test()
+if __name__ == "__main__":
+    data_list = read_from_excel()
+    print(data_list)
