@@ -16,7 +16,7 @@ import os
 ```
 
 ```python
-if __name__ == "__main__"
+if __name__ == "__main__":
 
     page_links = get_page_links() #获取页面列表，返回一个含有各页面链接的列表
 
