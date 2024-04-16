@@ -5,7 +5,32 @@ import csv
 import os
 
 def get_page_links():
-    pass
+    page_links=[]
+    url = "https://www.yibinu.edu.cn/xwzx/zhxw.htm"
+    header = {"User-Agent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36"}
+    html = requests.get(url=url,headers=header)
+    #print(html.status_code)
+    html = html.text
+    # print(html)
+    html = etree.HTML(html)
+    # print(html)
+    #html1 = html.xpath("//span[@class='p_no']/a/@href")
+    html2 = html.xpath("/html/body/div[4]/div/div[2]/div[3]/div/span[2]/span[4]/a/@href") ##输出结果为第二页网址
+    #print(html2)
+    for page_link in html2:
+        data = f"{page_link}"
+        list = []
+        list.append(data.replace("/44",""))
+        for i in range(44,0,-1):
+            result = data.replace("44",f"{i}")
+            list.append(result)
+        list1 = list
+        #print(list)
+        for page_link1 in list1:
+            page_url = "https://www.yibinu.edu.cn/xwzx/"+page_link1
+            print(page_url)
+            page_links.append(page_url)
+    return(page_links)
 
 def get_news_lists(page_link):
     article_list=[]
@@ -21,7 +46,7 @@ def get_news_lists(page_link):
         article_link = "https://www.yibinu.edu.cn" + i[2::]
         article_list.append(article_link)
         # print(article_link)
-    print(article_list)
+    return(article_list)
 
 def get_article(news_link):
     pass
