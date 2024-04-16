@@ -2,13 +2,7 @@ import requests
 from lxml import etree
 import re
 
-def get_title(news_link):
-    url=news_link
-    header={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0'}
-    res=requests.get(url=url,headers=header)
-    res.encoding='utf-8'
-    html=res.text
-    html=etree.HTML(html)
+def get_title(html):
     titles=html.xpath('//div[@class="detail-title"]/p/span/text()')
     i=1
     title_text=""
@@ -27,13 +21,7 @@ def get_title(news_link):
     print(">>title_text:",title_text)
     return title_text
 
-def get_date(news_link):
-    url = news_link
-    header = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0'}
-    res = requests.get(url=url, headers=header)
-    res.encoding = 'utf-8'
-    html = res.text
-    html = etree.HTML(html)
+def get_date(html):
     dates=html.xpath('/html/body/div[4]/div/div[2]/div[2]/form/div[2]/span[2]/text()')
     i=1
     date_value=""
@@ -60,14 +48,7 @@ def get_clicks(clickid):
     print(">>clicks:",res.text)
     return res.text
 
-def get_article(news_link):
-    url=news_link
-    header = {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0'}
-    res = requests.get(url=url, headers=header)
-    res.encoding = 'utf-8'
-    html = res.text
-    html = etree.HTML(html)
+def get_article(html):
     articles=html.xpath('//div[@class="v_news_content"]/p/text()')
     essays=''
     for article in articles:
@@ -80,11 +61,19 @@ def get_article(news_link):
     return essays
 
 def get_article_main(news_link):
-    article_title=get_title(news_link)
-    article_date=get_date(news_link)
+    url=news_link
+    header = {
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0'}
+    res = requests.get(url=url, headers=header)
+    res.encoding = 'utf-8'
+    html = res.text
+    html = etree.HTML(html)
+
+    article_title=get_title(html)
+    article_date=get_date(html)
     clickid=get_clickid(news_link)
     article_clicks=get_clicks(clickid)
-    article_text=get_article(news_link)
+    article_text=get_article(html)
     return (article_title,article_date,article_clicks,article_text)
 
 if __name__ == '__main__':
