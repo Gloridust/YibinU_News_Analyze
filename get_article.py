@@ -23,7 +23,7 @@ def get_title(news_link):
         if i==1:
             title_text=title_text+" "
             i=i+1
-    print(title_text)
+    print(">>title_text:",title_text)
     return title_text
 
 def get_date(news_link):
@@ -42,21 +42,21 @@ def get_date(news_link):
     s = values
     parts = s.split("：")
     date = parts[1] if len(parts) > 1 else None
-    print(date)
+    print(">>date:",date)
     return date
 
 def get_clickid(news_link):
     pattern = r"\/(\d+)\.htm"  
     match = re.search(pattern, news_link)  
     clickid = match.group(1)
-    print(clickid) 
+    print(">>clickid:",clickid) 
     return(clickid)
 
 def get_clicks(clickid):
     url = f"https://www.yibinu.edu.cn/system/resource/code/news/click/dynclicks.jsp?clickid={clickid}&owner=1397404744&clicktype=wbnews"
     header = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0"}
     res = requests.get(url=url, headers=header)
-    print(res.text)
+    print(">>clicks:",res.text)
     return res.text
 
 def get_article(news_link):
@@ -71,7 +71,7 @@ def get_article(news_link):
     essays=''
     for article in articles:
         essays=essays+article
-    print(essays)
+    print(">>article:",essays)
     return essays
 
 def get_article_main(news_link):
