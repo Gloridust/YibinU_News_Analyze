@@ -107,6 +107,6 @@ if __name__ == "__main__":
             write_to_excel(article_title,article_date,article_clicks,article_text)
             one_article_stop_time=time.time()
             print(">>one_article_time:",one_article_stop_time-one_article_start_time)
-            print("####################") #分隔符
+            print("\n####################\n") #分隔符
     stop_main_time=time.time()
     print(">>main_time:",stop_main_time-start_main_time)
