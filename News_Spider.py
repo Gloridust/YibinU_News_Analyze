@@ -92,7 +92,7 @@ def write_to_excel(article_title, article_date, article_clicks, article_text):
 
 
 if __name__ == "__main__":
-    start_main_time=time.clock()
+    start_main_time=time.time()
     #获取页面列表，返回一个含有各页面链接的列表
     page_links = get_page_links()
     #从列表中遍历出每一个链接
@@ -101,12 +101,12 @@ if __name__ == "__main__":
         news_list = get_news_lists(page_link)
         #传入页面链接，返回一个含有各新闻链接的列表
         for news_link in news_list:
-            one_article_start_time=time.clock()
+            one_article_start_time=time.time()
             #获取一篇新闻的 题目 日期 点击量 正文 
             article_title,article_date,article_clicks,article_text = get_article.get_article_main(news_link)
             write_to_excel(article_title,article_date,article_clicks,article_text)
-            one_article_stop_time=time.clock()
-            print(one_article_stop_time-one_article_start_time)
+            one_article_stop_time=time.time()
+            print(">>one_article_time:",one_article_stop_time-one_article_start_time)
             print("####################") #分隔符
-    stop_main_time=time.clock()
-    print(stop_main_time-start_main_time)
+    stop_main_time=time.time()
+    print(">>main_time:",stop_main_time-start_main_time)
