@@ -24,6 +24,12 @@ def read_from_excel():
     except Exception as e:
         print("Error occurred while reading from Excel:", e)
 
+
 if __name__ == "__main__":
     data_list = read_from_excel()
     print(data_list)
+    titles_list = [row[0] for row in data_list]
+    dates_list = [row[1] for row in data_list[1:]]
+    clicks_list = [row[2] for row in data_list[2:]]
+    articles_list = [row[3] for row in data_list[3:]]
+    print(articles_list)
