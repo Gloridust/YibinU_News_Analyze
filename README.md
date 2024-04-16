@@ -1,11 +1,24 @@
 # YibinU_News_Analyze
  宜宾学院新闻分析，包括新闻爬虫、热词、情感分析、数据可视化
 
+- [YibinU\_News\_Analyze](#yibinu_news_analyze)
+  - [程序结构](#程序结构)
+    - [News\_Spider.py](#news_spiderpy)
+      - [主程序结构](#主程序结构)
+      - [get\_page\_links()](#get_page_links)
+      - [get\_news\_lists(page\_link)](#get_news_listspage_link)
+      - [get\_article(news\_link)](#get_articlenews_link)
+      - [write\_to\_csv(article\_title,article\_date,article\_clicks,article\_text)](#write_to_csvarticle_titlearticle_datearticle_clicksarticle_text)
+  - [News\_Analyzer.py](#news_analyzerpy)
+
+
 ## 程序结构
 
 ### News_Spider.py
 
-1. 主程序结构
+网页爬虫部分
+
+#### 主程序结构
 
 ```python
 import requests
@@ -28,7 +41,7 @@ if __name__ == "__main__":
             write_to_csv(article_title,article_date,article_clicks,article_text)
 ```
 
-1. get_page_links()
+#### get_page_links()
 
 功能：遍历页码列表，获取所有页码的新闻页面的链接。
 
@@ -46,7 +59,7 @@ if __name__ == "__main__":
 
 ![](readme_src/pages.jpg)
 
-2. get_news_lists(page_link)
+#### get_news_lists(page_link)
 
 功能：获取单个页码对应的页面中，所有新闻的链接
 
@@ -63,7 +76,7 @@ if __name__ == "__main__":
 
 ![](readme_src/news_list.jpg)
 
-3. get_article(news_link)
+#### get_article(news_link)
 
 功能：获取文章内容，包括：题目 日期 点击量 正文 
 
@@ -80,10 +93,14 @@ if __name__ == "__main__":
 
 ![](readme_src/article.jpg)
 
-4. write_to_csv(article_title,article_date,article_clicks,article_text)
+#### write_to_csv(article_title,article_date,article_clicks,article_text)
 
 功能：保存到csv文件
 
 传入参数：'article_title,article_date,article_clicks,article_text'
 
 传出参数：无
+
+## News_Analyzer.py
+
+文章数据分析部分
