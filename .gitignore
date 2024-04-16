@@ -153,3 +153,4 @@ cython_debug/
 YibinU_News_Analyze_README.pdf
 data/articles.csv
 data/articles.xlsx
+data/*.xlsx
