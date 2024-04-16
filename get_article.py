@@ -23,6 +23,7 @@ def get_title(news_link):
         if i==1:
             title_text=title_text+" "
             i=i+1
+    title_text=title_text.strip()
     print(">>title_text:",title_text)
     return title_text
 
@@ -71,6 +72,10 @@ def get_article(news_link):
     essays=''
     for article in articles:
         essays=essays+article
+    articles=html.xpath('//div[@class="v_news_content"]/p/span/span/text()')
+    for article in articles:
+        essays=essays+article
+    essays=essays.strip()
     print(">>article:",essays)
     return essays
 
@@ -83,7 +88,7 @@ def get_article_main(news_link):
     return (article_title,article_date,article_clicks,article_text)
 
 if __name__ == '__main__':
-    news_link = "https://www.yibinu.edu.cn/info/1049/62011.htm"
+    news_link = "https://www.yibinu.edu.cn/info/1049/18652.htm"
     get_article_main(news_link)
 
 
