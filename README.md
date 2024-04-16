@@ -25,7 +25,7 @@ if __name__ == "__main__":
 
         for news_link in news_list: #从列表便利出每一篇新闻的链接
             article_title,article_date,article_clicks,article_text = get_article(news_link) #获取一篇新闻的 题目 日期 点击量 正文 
-
+            write_to_csv(article_title,article_date,article_clicks,article_text)
 ```
 
 1. 'get_page_links()'
