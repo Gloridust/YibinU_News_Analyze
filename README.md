@@ -44,6 +44,8 @@ if __name__ == "__main__":
 
 这样的返回值。不难发现除了首页叫做'zhxw.htm'，其他的都是从最高页码到第一页命名。要求要自动获取最大页编号，自动化遍历。
 
+![](readme_src/pages.jpg)
+
 2. 'get_news_lists(page_link)'
 
 功能：获取单个页码对应的页面中，所有新闻的链接
@@ -59,7 +61,9 @@ if __name__ == "__main__":
 
 这样的返回值。
 
-3. "get_article(news_link)"
+![](readme_src/news_list.jpg)
+
+3. 'get_article(news_link)'
 
 功能：获取文章内容，包括：题目 日期 点击量 正文 
 
@@ -74,3 +78,12 @@ if __name__ == "__main__":
 
 以上注意均格式化为字符串
 
+![](readme_src/article.jpg)
+
+4. 'write_to_csv(article_title,article_date,article_clicks,article_text)'
+
+功能：保存到csv文件
+
+传入参数：'article_title,article_date,article_clicks,article_text'
+
+传出参数：无
