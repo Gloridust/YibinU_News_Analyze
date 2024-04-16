@@ -15,8 +15,8 @@ def get_article(news_link):
 
 def write_to_csv(article_title, article_date, article_clicks, article_text):
     # 检查文件是否存在，如果不存在则创建文件并写入表头
-    file_exists = os.path.isfile('articles.csv')
-    with open('articles.csv', 'a', newline='', encoding='utf-8') as file:
+    file_exists = os.path.isfile('./data/articles.csv')
+    with open('./data/articles.csv', 'a', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
         if not file_exists:
             writer.writerow(['article_title', 'article_date', 'article_clicks', 'article_text'])
