@@ -28,7 +28,7 @@ if __name__ == "__main__":
             write_to_csv(article_title,article_date,article_clicks,article_text)
 ```
 
-1. 'get_page_links()'
+1. get_page_links()
 
 功能：遍历页码列表，获取所有页码的新闻页面的链接。
 
@@ -46,7 +46,7 @@ if __name__ == "__main__":
 
 ![](readme_src/pages.jpg)
 
-2. 'get_news_lists(page_link)'
+2. get_news_lists(page_link)
 
 功能：获取单个页码对应的页面中，所有新闻的链接
 
@@ -63,7 +63,7 @@ if __name__ == "__main__":
 
 ![](readme_src/news_list.jpg)
 
-3. 'get_article(news_link)'
+3. get_article(news_link)
 
 功能：获取文章内容，包括：题目 日期 点击量 正文 
 
@@ -80,7 +80,7 @@ if __name__ == "__main__":
 
 ![](readme_src/article.jpg)
 
-4. 'write_to_csv(article_title,article_date,article_clicks,article_text)'
+4. write_to_csv(article_title,article_date,article_clicks,article_text)
 
 功能：保存到csv文件
 
