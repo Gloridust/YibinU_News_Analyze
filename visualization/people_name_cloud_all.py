@@ -18,7 +18,7 @@ wordcloud = (
         word_size_range=[20, 100],
         shape=SymbolType.DIAMOND
     )
-        .set_global_opts(title_opts=opts.TitleOpts(title="2022-2024人物活跃度词云"))
+        .set_global_opts(title_opts=opts.TitleOpts(title="2022-2024人物活跃度词云",width="900px",height="500px"))
 )
 
 wordcloud.render("./html/charts/people_name_cloud_all.html")
