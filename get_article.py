@@ -69,6 +69,7 @@ def get_article_main(news_link):
     html = res.text
     html = etree.HTML(html)
 
+    #传参并调用
     article_title=get_title(html)
     article_date=get_date(html)
     clickid=get_clickid(news_link)
@@ -79,6 +80,7 @@ def get_article_main(news_link):
 if __name__ == '__main__':
     news_link = "https://www.yibinu.edu.cn/info/1049/18652.htm"
     get_article_main(news_link)
+    print("该片段仅用于测试，请运行'News_Spider'主程序.")
 
 
 
