@@ -15,4 +15,4 @@ values = values[:10]
 
 pie = Pie()
 pie.add("访问来源",[list(z) for z in zip(categories, values)],)
-pie.render("./html/people_name_pie_2024.html")
+pie.render("./html/charts/people_name_pie_2024.html")

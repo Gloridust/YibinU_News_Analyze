@@ -24,7 +24,7 @@ def create_bar_chart(columns, data):
         itemstyle_opts=ItemStyleOpts(color="#f075ab")  # 设置柱状图颜色为蓝色
     )
     bar.set_global_opts(title_opts=opts.TitleOpts(title="2023年度活跃人物"))
-    bar.render("./html/people_name_bar_2023.html")
+    bar.render("./html/charts/people_name_bar_2023.html")
 
 
 if __name__ == '__main__':

@@ -21,4 +21,4 @@ wordcloud = (
         .set_global_opts(title_opts=opts.TitleOpts(title="2022-2024人物活跃度词云"))
 )
 
-wordcloud.render("./html/people_name_cloud_all.html")
+wordcloud.render("./html/charts/people_name_cloud_all.html")

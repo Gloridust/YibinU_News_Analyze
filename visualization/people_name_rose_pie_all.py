@@ -20,8 +20,7 @@ def create_rose_pie(categories, values):
     # radius：扇区圆心角展现数据的百分比，半径展现数据的大小
     # area：所有扇区圆心角相同，仅通过半径展现数据大小
     pie.add("访问来源", [list(z) for z in zip(categories , values)], rosetype="area")
-    pie.render("./html/people_rose_pie_all.html")  # 渲染为HTML文件
-
+    pie.render("./html/charts/people_rose_pie_all.html")  # 渲染为HTML文件
 
 # 调用函数创建玫瑰饼图
 create_rose_pie(categories, values)

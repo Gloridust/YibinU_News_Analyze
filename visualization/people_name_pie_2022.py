@@ -17,6 +17,6 @@ values = values[:10]
 def testPie01():
     pie = Pie()
     pie.add("访问来源",[list(z) for z in zip(categories, values)],)
-    pie.render("./html/people_name_pie_2022.html")
+    pie.render("./html/charts/people_name_pie_2022.html")
 
 testPie01()
