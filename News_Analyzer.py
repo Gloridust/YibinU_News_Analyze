@@ -2,6 +2,8 @@ from ltp import LTP
 import pandas as pd  
 
 ltp = LTP()    #path = "LTP/tiny" LTP/base|LTP/small|LTP/tiny
+input_file_path = './data/sorted_hot_people-2022.xlsx'
+output_file_path = './data/sorted_hot_people-cloud.xlsx'
 
 def read_from_excel(path):
     try:
@@ -32,7 +34,7 @@ def make_hot_people_dict(article):
     return hot_people_dict
 
 if __name__ == "__main__":
-    data_list = read_from_excel("./data/articles-2023.xlsx")
+    data_list = read_from_excel(input_file_path)
     # print(data_list)
     titles_list = [row[0] for row in data_list]
     # print(titles_list)
@@ -48,5 +50,4 @@ if __name__ == "__main__":
 
     # 将排序后的字典写入 Excel 文件
     df = pd.DataFrame(hot_people_dict, columns=['姓名', '出现次数'])
-    file_path = './data/sorted_hot_people-2023.xlsx'
-    df.to_excel(file_path, index=False)
+    df.to_excel(output_file_path, index=False)
