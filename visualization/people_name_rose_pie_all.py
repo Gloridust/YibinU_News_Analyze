@@ -1,10 +1,9 @@
 import pandas as pd
 from pyecharts.charts import Pie
-from pyecharts import options as opts
 
 # 读取Excel文件  
 # 假设Excel文件名为'data.xlsx'，并且数据在第一个sheet中，列名为'Month'和'Value'  
-df = pd.read_excel('sorted_hot_people-cloud.xlsx', sheet_name=0)
+df = pd.read_excel('../data/sorted_hot_people-cloud.xlsx', sheet_name=0)
 
 # 提取列名和数据  
 # 假设列名为'Month'和'Value'  
@@ -21,7 +20,7 @@ def create_rose_pie(categories, values):
     # radius：扇区圆心角展现数据的百分比，半径展现数据的大小
     # area：所有扇区圆心角相同，仅通过半径展现数据大小
     pie.add("访问来源", [list(z) for z in zip(categories , values)], rosetype="area")
-    pie.render("rose_年度人物.html")  # 渲染为HTML文件
+    pie.render("./html/people_rose_pie_all.html")  # 渲染为HTML文件
 
 
 # 调用函数创建玫瑰饼图
