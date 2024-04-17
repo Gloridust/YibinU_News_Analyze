@@ -2,8 +2,8 @@ from ltp import LTP
 import pandas as pd  
 
 ltp = LTP()    #path = "LTP/tiny" LTP/base|LTP/small|LTP/tiny
-input_file_path = './data/sorted_hot_people-2022.xlsx'
-output_file_path = './data/sorted_hot_people-cloud.xlsx'
+input_file_path = './data/articles-2024.xlsx'
+output_file_path = './data/sorted_hot_people-2024.xlsx'
 
 def read_from_excel(path):
     try:
