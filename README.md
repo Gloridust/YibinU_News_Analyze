@@ -12,6 +12,7 @@
   - [News\_Analyzer.py](#news_analyzerpy)
 
 
+
 ## 程序结构
 
 ### News_Spider.py
@@ -23,9 +24,10 @@
 ```python
 import requests
 from lxml import etree
-import json
-import csv
+import pandas as pd  
 import os
+import get_article 
+import time
 ```
 
 ```python
