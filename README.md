@@ -2,6 +2,7 @@
  宜宾学院新闻分析，包括新闻爬虫、热词、情感分析、数据可视化
 
 - [YibinU\_News\_Analyze](#yibinu_news_analyze)
+  - [依赖软件包](#依赖软件包)
   - [程序结构](#程序结构)
     - [News\_Spider.py](#news_spiderpy)
       - [主程序结构](#主程序结构)
@@ -11,7 +12,11 @@
       - [write\_to\_csv(article\_title,article\_date,article\_clicks,article\_text)](#write_to_csvarticle_titlearticle_datearticle_clicksarticle_text)
   - [News\_Analyzer.py](#news_analyzerpy)
 
+## 依赖软件包
 
+```python
+pip install -r requirements.txt
+```
 
 ## 程序结构
 
