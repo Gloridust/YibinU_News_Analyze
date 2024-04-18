@@ -1,0 +1,5 @@
+ltp==4.2.13
+lxml==5.1.0
+pandas==2.2.2
+pyecharts==2.0.5
+Requests==2.31.0
